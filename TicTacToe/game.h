@@ -1,5 +1,8 @@
+#include "board.h"
+
 class Game 
 {
+
 private:
     bool player1, player2;
     Board b;
@@ -9,7 +12,6 @@ private:
     } stats;
 
 public:
-    
     void init();
     void play();
     void getPlayerInput(int &x, int &y);

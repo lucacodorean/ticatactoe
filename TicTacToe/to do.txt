@@ -1,0 +1,2 @@
+1) verificat functii pentru isWon
+2) validare existenta coordonatelor citite.
