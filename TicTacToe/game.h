@@ -1,17 +1,20 @@
+#include "board.h"
+
 class Game 
 {
+
 private:
     bool player1, player2;
     Board b;
 
     struct stats {
-        int wins_p1, wins_p2, draws;
+        int playerWins=0, computerWins=0, draws=0;
     } stats;
 
 public:
-    
-    void init();
-    void play();
-    void getPlayerInput(int &x, int &y);
-    bool isDone();
+    void init();                                /// initializes the game
+    void play();                                /// play method.
+    void replay();                              /// replay method.
+    void getPlayerInput(int &x, int &y);        /// get the values that the user has typed.
+    bool isDone();                              /// check if the round is over.
 };
