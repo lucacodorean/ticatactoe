@@ -1,7 +1,8 @@
 #pragma once
+#include "board.h"
+
 #include <iostream>
 #include <ctime>
-#include "board.h"
 
 class Game
 {
@@ -28,4 +29,6 @@ public:
     void getPlayerInput(int &x, int &y);
 
     void switchTurn();
+
+    bool shouldRunAgain();
 };

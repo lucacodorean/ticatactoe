@@ -62,6 +62,8 @@ bool Board::isTie()
 
 void Board::display()
 {
+    system("cls");
+
     std::cout << '\n';
     for (int i = 0; i < 3; i++)
     {

@@ -15,18 +15,35 @@ void Game::init()
     this->b.init();
 }
 
+bool Game::shouldRunAgain()
+{
+    char answer;
+    do
+    {
+        cout << "Do you want to play again? Y/N\n";
+        cin >> answer;
+    } while (answer != 'Y' || answer != 'N');
+
+    return (answer == 'Y' ? 1 : 0);
+}
+
 void Game::play()
 {
-    while (!this->isDone())
+    bool run = true;
+    while (run)
     {
-        int x, y;
-        this->getPlayerInput(x, y);
+        while (!this->isDone())
+        {
+            int x, y;
+            this->getPlayerInput(x, y);
 
-        this->b.mark((this->player1 ? 1 : 2), x, y);
+            this->b.mark((this->player1 ? 1 : 2), x, y);
 
-        this->b.display();
+            this->b.display();
 
-        this->switchTurn();
+            this->switchTurn();
+        }
+        run = shouldRunAgain();
     }
 }
 
@@ -52,7 +69,7 @@ void Game::givePoints(int winner)
     if (winner == 1)
     {
         this->stats.wins_p1++;
-        cout << "Human won the game!\n";
+        cout << "You won the game!\n";
         return;
     }
     this->stats.wins_p2++;
@@ -63,7 +80,11 @@ void Game::getPlayerInput(int &x, int &y)
 {
     if (this->player1)
     {
-        cin >> x >> y;
+        do
+        {
+            cout << "Enter a potition for X: ";
+            cin >> x >> y;
+        } while (this->b.board[x][y] != 0);
         return;
     }
     do
